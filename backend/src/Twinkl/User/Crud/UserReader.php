@@ -23,7 +23,7 @@ class UserReader extends BaseCrud
     {
         return $this->useSessAsDb() ? $this->processGetAllFromSess() : $this->processGetAllFromDb();
     }
-    
+
     /**
      * @param int[] $userIds
      * @return array[]
@@ -40,7 +40,7 @@ class UserReader extends BaseCrud
             $this->processGetAllByIdFromSess($userIds)
             : $this->processGetAllByIdFromDb($userIds);
     }
-    
+
     /**
      * @param int $userId
      * @return array|null
@@ -50,7 +50,7 @@ class UserReader extends BaseCrud
         $users = $this->getAllById([$userId]);
         return array_pop($users);
     }
-    
+
     /**
      * @return array[]
      */
@@ -67,14 +67,10 @@ class UserReader extends BaseCrud
                         `subscription_user` AS `su`
                             ON
                                 `su`.`user_id` = `u`.`id`
-                    JOIN
+                    LEFT JOIN
                         `subscription` AS `s`
                             ON
                                 `s`.`id` = `su`.`subscription_id` AND `s`.`active` = ?
-                    LEFT JOIN
-                        `bundle_subscription` AS `bs`
-                            ON
-                                `bs`.`subscription_id` = `su`.`subscription_id`
                     WHERE
                         `u`.`active` = ?',
                     [1,1]
@@ -82,7 +78,7 @@ class UserReader extends BaseCrud
             )
             ->toArray();
     }
-    
+
     /**
      * @return array[]
      */
@@ -104,11 +100,11 @@ class UserReader extends BaseCrud
             )
             ->toArray();
     }
-    
+
     /*
      * Sess logic
      */
-    
+
     /**
      * @return array[]
      */
@@ -116,7 +112,7 @@ class UserReader extends BaseCrud
     {
         return (new SessionGlob())->getUsers() ?: [];
     }
-    
+
     /**
      * @return array[]
      */
