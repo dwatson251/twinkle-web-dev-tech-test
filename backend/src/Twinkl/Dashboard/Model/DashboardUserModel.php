@@ -105,21 +105,21 @@ class DashboardUserModel
         $this->users = $userIds;
         return $this;
     }
-    
+
     /**
      * @return $this
      */
     public function loadAllUsers()
     {
         $this->users = array_merge(
-            $this->user,
+            $this->users,
             $this
                 ->getUserReader()
                 ->getAll()
         );
         return $this;
     }
-    
+
     /**
      * @return $this
      */
