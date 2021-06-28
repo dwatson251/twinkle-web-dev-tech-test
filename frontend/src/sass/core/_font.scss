@@ -1,0 +1,5 @@
+@each $iColour, $iHex in $colours {
+  .text-#{$iColour} {
+    color: $iHex;
+  }
+}

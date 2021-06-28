@@ -1,0 +1,19 @@
+.btn {
+  text-decoration: none;
+  padding: 5px 15px;
+  border: #ccc solid 1px;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(map-get($colours, "blue"), 0.1);
+  }
+  &:active {
+    background-color: rgba(map-get($colours, "blue-darker"), 0.3), ;
+  }
+
+  &.static {
+    background-color: inherit;
+  }
+}

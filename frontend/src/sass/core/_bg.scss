@@ -1,0 +1,5 @@
+@each $iColour, $iHex in $colours {
+  .bg-#{$iColour} {
+    background-color: $iHex;
+  }
+}
