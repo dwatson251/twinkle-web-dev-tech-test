@@ -39,11 +39,11 @@ class DashboardUserModel
      * @var int[]
      */
     protected $userIds = [];
-    
+
     /*
      * Init logic
      */
-    
+
     /**
      * @return UserCreator
      */
@@ -52,15 +52,16 @@ class DashboardUserModel
         $this->userCreator = $this->userCreator ?? new UserCreator();
         return $this->userCreator;
     }
-    
+
     /**
      * @return UserReader
      */
     protected function getUserReader(): UserReader
     {
+        $this->userReader = $this->userReader ?? new UserReader();
         return $this->userReader;
     }
-    
+
     /**
      * @return UserReader
      */
@@ -69,7 +70,7 @@ class DashboardUserModel
         $this->userDeleter = $this->userDeleter ?? new UserDeleter();
         return $this->userDeleter;
     }
-    
+
     /**
      * @return array
      */
@@ -77,7 +78,7 @@ class DashboardUserModel
     {
         return $this->users;
     }
-    
+
     /**
      * @param array $users
      * @return $this
@@ -87,7 +88,7 @@ class DashboardUserModel
         $this->users = $users;
         return $this;
     }
-    
+
     /**
      * @return int[]
      */
@@ -95,7 +96,7 @@ class DashboardUserModel
     {
         return $this->users;
     }
-    
+
     /**
      * @param int[] $userIds
      * @return $this
@@ -134,7 +135,7 @@ class DashboardUserModel
         $this->users[] = $userId;
         return $this;
     }
-    
+
     /**
      * @param array $users
      * @return $this
@@ -152,7 +153,7 @@ class DashboardUserModel
         array_push($this->users, ...$users);
         return $this;
     }
-    
+
     /**
      * @param int[] $userIds
      * @return $this
