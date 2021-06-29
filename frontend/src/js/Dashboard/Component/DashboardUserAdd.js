@@ -15,7 +15,7 @@ export default class DashboardUserAdd extends BaseComponent {
         if (!this.elem) {
             return;
         }
-        this.elem.click(this.onWidgetClik.bind(this));
+        this.elem.click(this.onWidgetClick.bind(this));
     }
 
     onWidgetClick(evt) {
