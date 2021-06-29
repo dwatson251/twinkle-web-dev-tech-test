@@ -58,6 +58,12 @@ class DashboardUserModel
      */
     protected function getUserReader(): UserReader
     {
+        /**
+         * UserReader was not instantiated before being returned.
+         *
+         * Dependency injection would be a better alternative as this method is not testable.
+         * Consider delegating tasks like this to a specialised service class as opposed to a Model.
+         */
         $this->userReader = $this->userReader ?? new UserReader();
         return $this->userReader;
     }
@@ -113,6 +119,9 @@ class DashboardUserModel
     public function loadAllUsers()
     {
         $this->users = array_merge(
+            /**
+             * Clear mistype.
+             */
             $this->users,
             $this
                 ->getUserReader()

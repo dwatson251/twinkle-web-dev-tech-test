@@ -52,6 +52,17 @@ class UserReader extends BaseCrud
     }
 
     /**
+     * Incredibly ambiguous method which does not describe from it's getting clearly.
+     *
+     * Consider better method naming to allow a better description of what these methods do.
+     *
+     * There were three ways to remove duplicates:
+     *  - Use a group by clause, however would require listing out all columns in select as opposed to wildcard select,
+     *    likely not to be the intended solution
+     *  - Use a distinct clause. More likely but highly ineffecient as MySQL result set aggregate has
+     *    to be scanned again to remove duplicates.
+     *  - Reduce the scope of the LEFT JOINs.
+     *
      * @return array[]
      */
     protected function processGetAllFromDb()
@@ -80,6 +91,7 @@ class UserReader extends BaseCrud
     }
 
     /**
+     *
      * @return array[]
      */
     protected function processGetAllByIdFromDb(array $userIds)

@@ -15,6 +15,9 @@ export default class DashboardUserAdd extends BaseComponent {
         if (!this.elem) {
             return;
         }
+        /**
+         * Obvious misspelling, however unclear usage even compared to other components.
+         */
         this.elem.click(this.onWidgetClick.bind(this));
     }
 
@@ -24,11 +27,20 @@ export default class DashboardUserAdd extends BaseComponent {
         }
     }
 
+    /**
+     * Method name does not suggest intentions? Is this the bug?
+     */
     onGetUserCreateSuccess(userCreateElem) {
         this.prependUserCreateWidget($(userCreateElem));
     }
 
     prependUserCreateWidget(userCreateElem) {
+        /**
+         * Result of method "before" not used, however does not appear to fix the issue when placed as an argument to
+         * the DashboardUserCreate constructor.
+         *
+         * It is not clear what value the constructor requires.
+         */
         this.elem.before(userCreateElem);
         new DashboardUserCreate(userCreateElem);
     }
